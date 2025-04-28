@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.text.SpannableString
 import android.text.Spanned
-import android.text.method.LinkMovementMethod      // <-- добавили
+import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.view.View
 import android.widget.Toast
-import android.graphics.Color
 import android.text.TextPaint
 import androidx.appcompat.app.AppCompatActivity
 import ru.fefu.activitiesfefu.databinding.ActivityRegisterBinding
+import androidx.core.graphics.toColorInt
 
 class RegistrationActivity : AppCompatActivity() {
 
@@ -22,18 +22,17 @@ class RegistrationActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // 1. возвращаемся по стрелке
+        // возвращаемся по стрелке
         binding.btnBack.setOnClickListener { finish() }
 
-        // 2. выпадающий список «Пол»
+        // выпадающий список «Пол»
         val genders = listOf("Мужской", "Женский")
         val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, genders)
         binding.actGender.setAdapter(adapter)
 
-        // 3. кликабельный текст
         makeAgreementSpan()
 
-        // 4. обработка кнопки
+        // обработка кнопки
         binding.btnContinue.setOnClickListener {
             Toast.makeText(this, "Регистрация…", Toast.LENGTH_SHORT).show()
         }
@@ -45,7 +44,7 @@ class RegistrationActivity : AppCompatActivity() {
         val agreement = getString(R.string.agreement)
 
         val span = SpannableString(full)
-        val color = Color.parseColor("#6200EE")
+        val color = "#6200EE".toColorInt()
 
         // Политика конфиденциальности
         val startPrivacy = full.indexOf(privacy)

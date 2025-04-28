@@ -13,10 +13,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Обработчик кнопки "назад"
         binding.btnBack.setOnClickListener {
-            // Возвращаемся на предыдущую активность (или WelcomeActivity)
-            finish() // Завершаем текущую активность и возвращаемся на предыдущую
+            finish()
         }
     }
 
